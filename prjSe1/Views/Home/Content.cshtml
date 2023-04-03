@@ -1,0 +1,482 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        * {
+            /*   border: solid 1px black; */
+        }
+
+        body {
+            flex-direction: column;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            background-color: #ffe6d7;
+            /*   color: rgba(255,255,255,0.95); */
+            font-size: 18px;
+            line-height: 28px;
+            letter-spacing: 1px;
+            font-family: "微軟正黑體",sans-serif;
+           
+        }
+
+        /* 複寫區 */
+        img {
+            width: 100%;
+            /*     margin-left: auto;
+            margin-right: auto; */
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        h2 {
+            margin: 0;
+            margin-bottom: 25px;
+            font-weight: 400;
+            color: red;
+        }
+
+        h1 {
+            margin: 0;
+            margin-bottom: 25px;
+            font-weight: 400;
+            color: red;
+            font-weight: bold;
+        }
+
+        h2::after {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 8px;
+            background-color: #FF7168;
+            margin-left: 10px;
+        }
+        h3{
+            margin: 0;
+            margin-top: 40px;
+            opacity: 0.8;
+            font-weight: 400;
+            font-size: 24px;
+          /*  font-weight: bold;*/
+        }
+        h4 {
+            margin: 0;
+            margin-top: 40px;
+            opacity: 0.8;
+            font-weight: 400;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        h5 {
+            margin: 0;
+            /*   margin-top: 40px; */
+            opacity: 0.8;
+            font-weight: 400;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        a {
+            color: white;
+            text-decoration: none
+        }
+
+        hr {
+            border: none;
+            border-bottom: solid 4px #FF7168;
+            width: 40%;
+            margin-left: 0;
+        }
+
+        p {
+            margin: 0;
+            margin-top: 40px;
+            opacity: 0.8;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 30px;
+            letter-spacing: 3px;
+        }
+
+        .resume {
+            display: flex;
+            max-width: 950px;
+            border: solid 8px white;
+            padding: 50px;
+            position: relative;
+               flex-direction: column;
+        }
+
+        .left {
+            flex: 5
+        }
+
+        .right {
+            flex: 7
+        }
+
+        .left, .right {
+            padding: 15px
+        }
+
+        .left {
+            padding-right: 50px;
+            border-right: solid 1px #FF7168;
+        }
+
+        .right {
+            padding-left: 50px;
+            padding-top: 150px;
+        }
+
+
+        .decoration {
+            width: 300px;
+            height: 140px;
+            background: linear-gradient(135deg,#FF5F5F,#FFFFAE);
+            border-radius: 70px 0px 0px 70px;
+            position: absolute;
+            right: 0;
+            top: 50px;
+        }
+
+        .listExperience > li {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+            .listExperience > li:nth-child(1) ul {
+                border-color: #FF7168
+            }
+
+            .listExperience > li:nth-child(2) ul {
+                border-color: #FFA582
+            }
+
+            .listExperience > li:nth-child(3) ul {
+                border-color: #FFB087
+            }
+
+            .listExperience > li:nth-child(4) ul {
+                border-color: #FFDE9E
+            }
+
+        .listExperience li ul {
+            padding-left: 10px;
+            margin-left: 10px;
+            border-left: solid 4px white
+        }
+
+
+        /* list skill */
+        .listSkill {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+            .listSkill li {
+                width: 25%;
+                padding: 5px;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+        .circle {
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(255, 113, 104,0.4);
+        }
+
+            .circle::after {
+                content: "";
+                display: block;
+                background-color: #02005B;
+                width: calc(100% - 20px);
+                height: calc(100% - 20px);
+                border-radius: 50%;
+                position: relative;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%)
+            }
+
+        .p90, .p180, .p270, .p360 {
+            width: 50%;
+            height: 50%;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            background-color: #FF7168;
+        }
+
+        .p180 {
+            top: 50%;
+        }
+
+        .p270 {
+            left: 0;
+            top: 50%;
+        }
+
+        .p360 {
+            left: 0;
+            top: 0;
+        }
+
+
+        /* list program */
+
+        .listProgram .bar {
+            width: 150px;
+            height: 10px;
+            border: solid 2px #FF7168;
+            border-radius: 5px
+        }
+
+        .listProgram li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+        }
+
+        .value {
+            height: 100%;
+            width: 60%;
+            background-color: #FF7168;
+        }
+
+            .value.p10 {
+                width: 10%;
+            }
+
+            .value.p20 {
+                width: 20%;
+            }
+
+            .value.p30 {
+                width: 30%;
+            }
+
+            .value.p40 {
+                width: 40%;
+            }
+
+            .value.p50 {
+                width: 50%;
+            }
+
+            .value.p60 {
+                width: 60%;
+            }
+
+            .value.p70 {
+                width: 70%;
+            }
+
+            .value.p80 {
+                width: 80%;
+            }
+
+            .value.p90 {
+                width: 90%;
+            }
+
+            .value.p100 {
+                width: 100%;
+            }
+
+       /* .btn {
+            border: solid 3px #FF7168;
+            padding: 5px 20px;
+            margin-right: 10px;
+        }
+
+        .fill {
+            background-color: #FF7168;
+        }
+        .button2{
+            position:relative;
+        }
+        .btn-1{
+            display: flex;
+            margin-right: 30px;
+            position: relative;
+        }
+
+            .btn-1:hover {
+                background-color: #eee;
+                    }*/
+
+           .buttons {
+            width:700px;
+           font-size:16px;
+            border-radius: 15px;
+            overflow: hidden;
+            color:#222;
+           display:flex;
+        }
+
+            .buttons .btn {
+                display: inline-block;
+                padding: 10px 25px;
+                letter-spacing: 2px;
+            }
+
+        .btnNews {
+            float: right;
+            background-color: #fff;
+            border: solid 1px #ccc;
+            transition: 0.5s;
+            border-radius: 15px;
+            color: #222;
+        }
+
+            .btnNews:hover {
+                background-color: #eee;
+            }
+
+        .btnWebsite {
+            background-color: #ff7526;
+            border-radius: 15px;
+            /*   border: solid 1px #ccc;*/
+            transition: 0.5s;
+            color: #222;
+        }
+
+            .btnWebsite:hover {
+                background-color: #ff9156;
+            }
+
+
+
+
+
+</style>
+   
+
+</head>
+<body>
+      <div class="buttons">
+                <a class="btn btnWebsite" href="../Home/index" target="_blank">0.回到首頁</a>
+                <a class="btn btnNews" href="../Home/content" target="_blank">1.織路簡介</a>
+            <a class="btn btnWebsite" href="../Home/conclude" target="_blank">2.性平距離</a>
+            <a class="btn btnNews" href="../Home/conclude2" target="_blank">3.性平車站</a>
+            <a class="btn btnWebsite" href="../Home/questionary" target="_blank">4.請填問卷</a>
+            </div>
+
+   @* <div class="button2">
+        <ul class="btn-1">
+            <li class="nav-item">
+                <a  asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            <li class="nav-item">
+                <a  asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </li>
+        </ul>
+    </div>*@
+    <div class="resume">
+       
+        <div class="left">
+            <h1>說到『子宮』<BR></h1><h1 class="h2">您會不會有點尷尬?</h1>
+            <h3>
+                親愛的，您認識子宮嗎?<br>
+                子宮是母性的象徵，更是人類生命的起點，<br>
+                說到子宮，您會不會感到有點兒害羞或尷尬呢?<br>
+              
+            </h3>
+            <h4>親愛的，我把子宮掛高高!</h4>
+            <hr>
+            
+
+
+            <p>
+                人來人往的車站內，鮮紅的大型公共藝術作品《 織路 Elug Tminum》懸吊高掛於出入大廳天花板上， 以原住民傳統被毯 Gabang做為發想，作品以色彩繽紛的原住民傳統織布包覆著 鋼骨結構藝術家在製作過程中恰好懷孕，創作時腦海裡出現不同的元素，逐漸衍生出有如「子宮」的外形 內部大大小小的孔道，宛如血液流通穿梭整體而尾端紅豔欲滴的開口，織出的是新生命誕生之路。
+            </p>
+
+            <p>
+                這是一件結合原住民工藝，質地柔軟、意象濃稠，充滿女性意識的純手工作品是由「太魯閣族」編織藝術家林介文小姐所製作，鐵道局將 《 織路 》 高掛於太魯閣國家公園的門戶「新城太魯閣車站」。
+            </p>
+            <p>
+                《織路》由天花板垂吊，猶如一個充滿文化織紋的時空背帶，歡迎著每位來自不同國家與文化的旅客，可讓觀賞者想像與認知，進入一個在地族群歷經了遷徙、文化傳承及歷史洪流的藝術旅途中，織出回家的路；也像是一個通道，如同一個生命經過艱難狹窄的地方，終能找到出口。作品在設置時，特別將作品陷落處向下延伸的喇叭狀開口，面向車站出入口，帶引人們進入一個充滿圖紋想像的世界。
+            </p>
+            <p>
+                《織路》是透過大量的民眾參與活動所組成，強調的是過程與參與，織布是行為，交換也是行為，行為發生的同時，觀念得以傳播，藝術也在其中產生。
+            </p>
+            <p>
+                《織路》在作品初期材料蒐集，透過「Tanbrigen跨國交換計畫」(Tanbrijen，中文是「交換」的意思)，蒐集了世界各地二手衣、棉線、回收毛衣等共230公斤的衣物材料，利用環保材質作為作品基礎。
+            </p>
+            <p>
+                回收回來的衣物，透過在花蓮地區舉辦4場「今日拆毛衣」活動，由132位民眾拆解成為棉線，作為下一階段編織作業的材料。
+            </p>
+            <p>
+                最後民眾合力拆解的毛衣棉線，透過「原住民織布計畫」將回收毛衣棉線、棉麻線、毛線及手工苧麻線等材料，以傳統原住民織布技術，組織成一塊塊呈現於眼前的美麗布料。
+            </p>
+            <p>
+                「原住民織布計畫」在花蓮縣境內花費一段時日，邀集30位以上會織布的原住民織女，其年齡分布於24至88歲。織布的藝術已經在現代生活中快要滅絕，藉由這次的織布計畫，重新讓織布藝術找到生命，得以延續。編織技藝為原住民族重要文化，而纖維藝術（Fiber Art）之材質與形式的多樣性，可重組出傳統編織美學之當代意象，傳統工藝混搭新世代美學，發揚百年傳統的原住民織布文化。
+            </p>
+            <p>
+                林介文藝術家說「我覺得織布就像是用手在走路，只是，走的速度很慢，但是有一種很踏實的感覺」，原住民織布在太魯閣族的傳統是一個女性的表徵，要會織布才能紋面，有紋面才能結婚，常常織的是一條通往山林裡的道路、一條記憶，而藝術家則想要透過《織路》表達這些女人們的記憶與技藝，藉此述說著「我們在這裡」。
+            </p>
+            <p>
+                林介文藝術家分享，她親自帶兩位織女阿嬤去看展覽，她們非常高興，一開始看到作品上自己織的布高掛在車站大廳上，有些不知所措，可過幾天，阿嬤很興奮地拿著傳單不停分享：「我跟你說喔，我的織布喔，掛在火車站上耶！」那時藝術家不禁感到欣慰：「對原住民老人家來說，我最希望能帶給他們的，就是像這樣的成就感。」
+            </p>
+
+
+            <div class="block">
+             
+            </div>
+        </div>
+        <div class="right">
+            <div class="decoration"></div>
+            <div class="block">
+                <img src=https://drive.google.com/uc?export=view&id=11gFxBRHMyH_ps2kDt9YehgJW0Igt0rzf>
+
+
+                <h5>宛如子宮外型的「織路」高掛在新城車站</h5>
+                <br>
+                <hr>
+
+                <img src=https://drive.google.com/uc?export=view&id=1Rir8KnKE9ENpJ5zwzTnyBsirkFh0mSYM>
+
+                <h5>宛如字宮外型的「織路」高掛在新城車站</h5>      <br>
+                <hr>
+                <img src=https://drive.google.com/uc?export=view&id=1i3cD_DjPzRfQC1grv4fnUSmhoD41mcU->
+                <br>
+                <hr>
+                <img src=https://drive.google.com/uc?export=view&id=1mt_NNof1RwkVSU07iiXWVkithxATdKFd> <br>
+                <hr>
+                <img src=https://drive.google.com/uc?export=view&id=12iv0yl8dfjrmAgtwlx0ajwnz0w8xOpYI> <br>
+                <hr>
+                <img src=https://drive.google.com/uc?export=view&id=1Rir8KnKE9ENpJ5zwzTnyBsirkFh0mSYM>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

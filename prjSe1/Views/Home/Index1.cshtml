@@ -1,0 +1,302 @@
+﻿@*@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+    ViewBag.Title = "Home Page";
+}*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+  html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #div-show {
+            width: 100%;
+            height: 70%;
+            background-color: black;
+            text-align: center;
+        }
+
+            #div-show img {
+                height: 100%;
+            }
+
+        #div-cont {
+            position: relative;
+            width: 100%;
+            height: 30%;
+            overflow: hidden;
+        }
+
+        #btnPrev {
+            width: 30px;
+            height: 30px;
+            background-image: url("images/icon/prev.png");
+            background-size: cover;
+            position: absolute;
+            top: 40%;
+            left: 5px;
+        }
+
+        #btnNext {
+            width: 30px;
+            height: 30px;
+            background-image: url("images/icon/next.png");
+            background-size: cover;
+            position: absolute;
+            top: 40%;
+            right: 5px;
+        }
+
+        #div-select {
+            height: 100%;
+            width: 1000%;
+            position: absolute;
+            background-color: black;
+            left: 0%;
+            transition: 1.5s;
+        }
+
+            #div-select div {
+                height: 85%;
+                width: 240px;
+                float: left;
+                margin-left: 14px;
+                margin-top: 10px;
+            }
+
+            #div-select img {
+                width: 100%;
+                height: 100%;
+            }
+            form {
+            position: absolute;
+            top: 40%;
+            left: 5px;
+            }
+
+</style>
+    @*<style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #div-show {
+            width: 100%;
+            height: 70%;
+            background-color: black;
+            text-align: center;
+        }
+
+            #div-show img {
+                height: 100%;
+                /*width:100%;*/
+            }
+
+        #div-cont {
+            position: relative;
+            width: 100%;
+            height: 30%;
+            overflow: hidden;
+        }
+
+        #btnPrev {
+            width: 300px;
+            height: 300px;
+            background-image: url("prev.png");
+            background-size: cover;
+            position: absolute;
+            top: 40%;
+            left: 5px;
+        }
+
+        #btnNext {
+            width: 300px;
+            height: 300px;
+            background-image: url("next.png");
+            background-size: cover;
+            position: absolute;
+            top: 40%;
+            right: 5px;
+        }
+
+        #div-select {
+            height: 100%;
+            width: 1000%;
+            position: absolute;
+            background-color: black;
+            left: 0%;
+            transition: 1.5s;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+            .buttons .btn {
+                display: inline-block;
+                padding: 10px 25px;
+                letter-spacing: 2px;
+            }
+
+        .btnNews {
+            float: left;
+            background-color: #ed9dce;
+            border: solid 1px #ccc;
+            transition: 0.5s;
+            position: absolute;
+            left: 30px;
+            top: 250px;
+        }
+
+            .btnNews:hover {
+                background-color: #ff9156;
+            }
+
+        .btnWebsite {
+            float: right;
+            background-color: #ed9dce;
+            border: solid 1px #ccc;
+            transition: 0.5s;
+            position: absolute;
+            right: 30px;
+            top: 250px;
+            height:400px;
+            width:800px;
+            /*   border: solid 1px #ccc;
+                  transition : 0.5s; */
+        }
+
+            .btnWebsite:hover {
+                background-color: #ff9156;
+            }
+
+        #div-select div {
+            height: 85%;
+            width: 840px;
+            float: left;
+            margin-left: 14px;
+            margin-top: 10px;
+        }
+
+        #div-select img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>*@
+
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script>
+        var select = 0;
+        var sel_val = 0;
+        // 網頁載入完成執行
+        $(document).ready(function () {
+            $("#div-select").empty();
+            // 將預覽圖div1~div13新增到#div-select元素
+            for (var i = 1; i <= 13; i++) {
+                $("#div-select").append
+                    (
+                        "<div id='div" + i + "'><img src='images/pic_" + i + ".jpg'></div>"
+                    );
+                // 預覽圖區塊div1~div13新增click事件處理函式fnChange
+                // 按下預覽圖會傳送num參數，此參數為圖片編號
+                $("#div" + i).on('click', { num: i }, fnChange);
+
+                //  $("#div" + i).delegate("click", { num: i }, fnChange);
+            }
+            //for (var i = 1; i <= 13; i++) {
+            // $("#div" + i).delegate({ num: i }, 'click', fnChange);
+            //}
+            //// 判斷往左與右鈕是否出現
+            //iconShow();
+            //// 按下往左鈕執行fnPrev函式
+            //$("#btnPrev").delegate("click", fnPrev);
+            //// 按下往右鈕執行fnNext函式
+            //$("#btnNext").delegate("click", fnNext);
+        })
+
+        function fnChange(event) {
+            //  alert("tt");
+            // 取得選取的圖片編號並組成完成圖檔
+            var filename = "images/pic_" + event.data.num + ".jpg"
+            console.log(event.data.num);
+            // 顯示圖片
+            $("#show").attr("src", filename);
+            // 以1呈現淡出動畫
+            $("#show").hide().fadeIn(1000);
+        }
+        // 判斷往左與右鈕是否出現
+        function iconShow() {
+            if (select < 1) {
+                $("#btnPrev").attr("style", "display:none;");
+            } else if (select > 1) {
+                $("#btnNext").attr("style", "display:none;");
+            } else {
+                $("#btnPrev").removeAttr("style");
+                $("#btnNext").removeAttr("style");
+
+            }
+            // console.log(#btnPrev);
+        }
+        // 往左鈕事件處理函式
+        function fnPrev() {
+            //往右捲動動畫
+            if (select != 0) {
+                select -= 1;
+                sel_val += 100;
+                $("#div-select").css("left", sel_val + "%");
+            }
+            console.log(select);
+            iconShow()
+        }
+        // 往右鈕事件處理函式
+        function fnNext() {
+            //往左捲動動畫
+            select += 1;
+            sel_val -= 100;
+            $("#div-select").css("left", sel_val + "%");
+            iconShow();
+        }
+    </script>
+
+</head>
+<body>
+    <Form method="post" action="@Url.Action("questionary","Home")">                                     
+                <p><input type="submit" value="開始填表" style="font-size:30px;width:130px;height:50px; float:right;" /></p>       
+    </Form>
+    <div class="buttons">
+        <a class="btn btnWebsite" href="../Home/questionary.cshtml" target="_blank">填寫問卷</a>
+        <a class="btn btnNews" href="https://Apple.com.tw" target="_blank">回上一頁</a>
+    </div>
+
+    <div id="div-show">
+        <img id="show" src="~/lib/pic_1.jpg">
+    </div>
+    <div id="div-cont">
+        <div id="div-select">
+        </div>
+        <div id="btnPrev"></div>
+        <div id="btnNext"></div>
+    </div>
+    <script>
+        for (var i = 1; i <= 13; i++) {
+            $("#div" + i).delegate({ num: i }, 'click', fnChange);
+        }
+        // 判斷往左與右鈕是否出現
+        iconShow();
+        // 按下往左鈕執行fnPrev函式
+        // 按下往左鈕執行fnPrev函式
+        $("#btnPrev").on("click", fnPrev);
+        // 按下往右鈕執行fnNext函式
+        $("#btnNext").on("click", fnNext);
+    </script>
+</body>
+</html>

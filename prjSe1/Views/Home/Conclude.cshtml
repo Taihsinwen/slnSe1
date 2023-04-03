@@ -1,0 +1,596 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        * {
+            /*   border: solid 1px black; */
+        }
+
+        body {
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            background-color: #ffe6d7;
+            /*   color: rgba(255,255,255,0.95); */
+            font-size: 18px;
+            line-height: 28px;
+            letter-spacing: 1px;
+            font-family: "微軟正黑體",sans-serif;
+            flex-direction: column;
+        }
+
+        /* 複寫區 */
+        img {
+            width: 100%;
+            /*     margin-left: auto;
+                    margin-right: auto; */
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        h2 {
+            margin: 0;
+            margin-bottom: 25px;
+            font-weight: 400;
+            color: red;
+        }
+
+        h1 {
+            margin: 0;
+            margin-bottom: 25px;
+            font-weight: 400;
+            color: red;
+            font-weight: bold;
+        }
+
+        h2::after {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 8px;
+            background-color: #FF7168;
+            margin-left: 10px;
+        }
+
+        h3 {
+            margin: 0;
+            margin-top: 40px;
+            opacity: 0.8;
+            font-weight: 400;
+            font-size: 24px;
+            /*  font-weight: bold;*/
+        }
+        h4 {
+            margin: 0;
+            margin-top: 40px;
+            opacity: 0.8;
+            font-weight: 400;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        h5 {
+            margin: 0;
+            /*   margin-top: 40px; */
+            opacity: 0.8;
+            font-weight: 400;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        a {
+            color: white;
+            text-decoration: none
+        }
+
+        hr {
+            border: none;
+            border-bottom: solid 4px #FF7168;
+            width: 40%;
+            margin-left: 0;
+        }
+
+        p {
+            margin: 0;
+            margin-top: 40px;
+            opacity: 0.8;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 30px;
+            letter-spacing: 3px;
+        }
+
+        .resume {
+            display: flex;
+            max-width: 950px;
+            border: solid 8px white;
+            padding: 50px;
+            position: relative;
+          
+        }
+
+        .left {
+            flex: 5
+        }
+
+        .right {
+            flex: 7
+        }
+
+        .left, .right {
+            padding: 15px
+        }
+
+        .left {
+            padding-right: 50px;
+            border-right: solid 1px #FF7168;
+        }
+
+        .right {
+            padding-left: 50px;
+            padding-top: 150px;
+        }
+
+
+        .decoration {
+            width: 300px;
+            height: 140px;
+            background: linear-gradient(135deg,#FF5F5F,#FFFFAE);
+            border-radius: 70px 0px 0px 70px;
+            position: absolute;
+            right: 0;
+            top: 50px;
+        }
+
+        .listExperience > li {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+            .listExperience > li:nth-child(1) ul {
+                border-color: #FF7168
+            }
+
+            .listExperience > li:nth-child(2) ul {
+                border-color: #FFA582
+            }
+
+            .listExperience > li:nth-child(3) ul {
+                border-color: #FFB087
+            }
+
+            .listExperience > li:nth-child(4) ul {
+                border-color: #FFDE9E
+            }
+
+        .listExperience li ul {
+            padding-left: 10px;
+            margin-left: 10px;
+            border-left: solid 4px white
+        }
+
+
+        /* list skill */
+        .listSkill {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+            .listSkill li {
+                width: 25%;
+                padding: 5px;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+        .circle {
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(255, 113, 104,0.4);
+        }
+
+            .circle::after {
+                content: "";
+                display: block;
+                background-color: #02005B;
+                width: calc(100% - 20px);
+                height: calc(100% - 20px);
+                border-radius: 50%;
+                position: relative;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%)
+            }
+
+        .p90, .p180, .p270, .p360 {
+            width: 50%;
+            height: 50%;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            background-color: #FF7168;
+        }
+
+        .p180 {
+            top: 50%;
+        }
+
+        .p270 {
+            left: 0;
+            top: 50%;
+        }
+
+        .p360 {
+            left: 0;
+            top: 0;
+        }
+
+
+        /* list program */
+
+        .listProgram .bar {
+            width: 150px;
+            height: 10px;
+            border: solid 2px #FF7168;
+            border-radius: 5px
+        }
+
+        .listProgram li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+        }
+
+        .value {
+            height: 100%;
+            width: 60%;
+            background-color: #FF7168;
+        }
+
+            .value.p10 {
+                width: 10%;
+            }
+
+            .value.p20 {
+                width: 20%;
+            }
+
+            .value.p30 {
+                width: 30%;
+            }
+
+            .value.p40 {
+                width: 40%;
+            }
+
+            .value.p50 {
+                width: 50%;
+            }
+
+            .value.p60 {
+                width: 60%;
+            }
+
+            .value.p70 {
+                width: 70%;
+            }
+
+            .value.p80 {
+                width: 80%;
+            }
+
+            .value.p90 {
+                width: 90%;
+            }
+
+            .value.p100 {
+                width: 100%;
+            }
+
+      
+
+        .buttons {
+            width: 700px;
+            font-size: 16px;
+            border-radius: 15px;
+            overflow: hidden;
+            color: #222;
+            display: flex;
+        }
+
+            .buttons .btn {
+                display: inline-block;
+                padding: 10px 25px;
+                letter-spacing: 2px;
+            }
+
+        .btnNews {
+            float: right;
+            background-color: #fff;
+            border: solid 1px #ccc;
+            transition: 0.5s;
+            border-radius: 15px;
+            color: #222;
+        }
+
+            .btnNews:hover {
+                background-color: #eee;
+            }
+
+        .btnWebsite {
+            background-color: #ff7526;
+            border-radius: 15px;
+            /*   border: solid 1px #ccc;*/
+            transition: 0.5s;
+            color: #222;
+        }
+
+            .btnWebsite:hover {
+                background-color: #ff9156;
+            }
+
+    </style>
+
+
+</head>
+<body>
+    <div class="buttons">
+        <a class="btn btnWebsite" href="../Home/index" target="_blank">0.回到首頁</a>
+        <a class="btn btnNews" href="../Home/content" target="_blank">1.織路簡介</a>
+        <a class="btn btnWebsite" href="../Home/conclude" target="_blank">2.性平距離</a>
+        <a class="btn btnNews" href="../Home/conclude2" target="_blank">3.性平車站</a>
+        <a class="btn btnWebsite" href="../Home/questionary" target="_blank">4.請填問卷</a>
+    </div>
+<div class="resume">
+
+    <div class="left">
+            <h1> 我們與「性平」的距離 </h1><br>
+            <h2>全球性別平等還要300年！</h2><br>
+            <h3>
+                期許透過「法令執行」、「教育宣導 」、「主動實踐」
+                目標使「我們與『性平』的距離=零」
+            </h3><br>
+            <h3>從《織路》探討「生育權」及女性「身體自主權」</h3><br>
+            <h3>
+                發現「臺灣與『性平』的距離」依舊存在
+            </h3>
+            <br>
+
+
+            <p>3月8日是國際婦女節，聯合國秘書長古特瑞斯在聯合國大會演說中表示：「性別平等愈來愈遙遠。依現況發展來看，聯合國婦女署（UN Women）認為需要300年（才能達成目標）。」聯合國秘書長還說：「女權在全球都遭到濫用、威脅、侵害。」他列舉種種危機，包括孕婦死亡率、女童失學、照顧者找不到工作和強迫童婚。「在許多地方，女性的性權利和生育權都在倒退，有些國家的女孩要冒著被綁架和侵犯的風險去上學」。</p><br>
+            <p>伊朗大力鎮壓自去年9月開始由女性領導的示威活動，穿戴頭巾曾幾何時不再是女性自己的選擇，而被當成整個伊斯蘭國家擁抱和對抗西化的象徵。[7]阿富汗在塔利班政權統治下，局勢尤為艱困，當地成人女性和女孩都不得參與公眾生活。阿富汗女性連笑都不行？塔利班「29條禁令」，限制女性外出、工作、學習、人際互動、服裝、笑聲、鞭打…等等不可置信的侵犯人權的法令規定。</p><br>
+            <p>
+                聯合國開發計畫署（UNDP）發布性別不平等指數（Gender Inequality Index, GII）以生殖健康、賦權及勞動市場 3 個領域之 5 項指標衡量各國性別平等情形。2021 年我國性別平等居全球第 7 名，亞洲第 1 名。[10]世界經濟論壇（WEF）發布性別落差指數
+                Gender Gap Index, GGI）以「經濟參與和機會」、「教育程度」、「健康與生存」及「政治參與」4大面向衡量各國性別差距實況，2022 年我國居全球第 36 名，較2021 年上升 2 名。
+            </p><br>
+            <p>
+                聯合國開發計畫署及世界經濟論壇的調查結果，足以顯示我國多年來持續努力推動「性別平等」改革與推廣之成效有目共睹，在亞洲及全球名列前茅，深受國際肯定。
+            </p><br>
+            <p>
+                但推動「性別平等」的腳步仍不可停下，我國為自由民主、資訊發達的國家，民眾可輕易在網際網路、社群媒體及新聞報導等多處，得知更多國內與國際間所發生的性平平等相關議題及事件，並給予關注、分享、評論及支持等行動，所以「性別平等」我們不能置身事外，而是透過更多的努力，使「我們與『性平』的距離=零」。
+            </p><br>
+
+
+
+            <h2>鐵路運輸「性別平等」完整生命週期</h2><br>
+            <p> 鐵路運輸是臺灣重要的大眾運輸系統之一，肩負城際運輸及民眾通勤、就學、旅行等通行移動之功能，而車站則是鐵路運輸之節點，也是進出各個郊區鄉鎮及都會區城市的重要門戶，更是形塑在地凝聚力的地標性建築。鐵路運輸在台灣東部，更是舉足輕重、不可或缺的重要運輸工具，未來依據國家發展委員會推估2022~2070年台灣人口，因應未來人口結構變化，車站設計除須滿足旅運需求並融入地方特色以外，更須考量不同使用者的需求，建構更多元、安全、平等及友善的環境。 </p><br>
+            <p>新城車站於規劃設計階段，即在花東線鐵路特別舉辦「車站改建效能提升」花東論壇及「花東新車站運動」地方座談會，廣邀當地民眾及藝術家，不論性別、年齡，在眾多領域及公共藝術皆能積極參與投入，後續施工、營運及監理各階段，透過「法令執行」、「教育宣導 」及「主動實踐」，將「性別平等」理念落實於鐵道運輸的「完整生命週期」。</p><br>
+            <h2>
+
+                「性別平等」主動實踐
+            </h2><br>
+            「鐵道局」及「鐵道局東部工程處」針對「性別平等」主動實踐化為具體行動，辦理多項員工協助方案：</p><br>
+            <p>
+                1、 辦理多場「關懷與協助」課程：辦理婚姻關係、工作與家庭平衡、家庭角色與家務分工、懷孕育兒、教養、親職角色適應等相關之影片觀賞、實體、數位學習課程。
+            </p><br>
+            <p>
+                2、 營造友善職場辦公環境：
+            </p><br>
+            <p>
+                (1) 設置哺集乳室及宿舍提供女性住宿專用樓層(含衛浴、洗衣機、曬衣間等)。
+            </p><br>
+            <p>
+                (2) 設置婦女優先停車格及身障停車位供懷孕或行動不便同仁優先使用；並增設樓梯升降椅，提供行動不便之同仁使用。
+            </p><br>
+            <p>
+                (3) 於辦公室、宿舍區及停車場加裝錄影設備及感應燈光，建構安全環境。
+            </p><br>
+            <p>
+                (4) 設立暖心專區-免費提供女性生理用品、熱敷袋、暖暖包及暖身飲品等，舒緩女性經期的不便與不適。
+            </p><br>
+            <p>
+                3、 親子日活動：每年一度辦理親子日活動，邀請員工眷屬瞭解同仁工作情形，增進親子情感交流，體會工作辛勞。(2020年及2021年因疫情影響停辦，預計2023年年中恢復辦理。)
+            </p><br>
+            <p>
+                4、 「員工協助」專區：
+            </p><br>
+            <p>
+                (1) 提供心理(含心理衛生中心服務資源、線上心理諮商)、法律、理財、醫療及管理等5類社會資源網絡地圖。
+            </p><br>
+            <p>
+                (2) 提供幼兒園托育服務優惠資訊。
+            </p><br>
+            <p>
+                (3) 提供有關員工權益之法規修正重點、員工協助方案活動(EAPs)、關懷文章等相關資訊。
+            </p><br>
+            <p>
+                (4) 提供員工協助方案相關書籍影音資源供同仁借閱。
+            </p><br>
+            <p>
+                5、 人人都是關懷員：透過多場課程及宣導，培養員工具備關懷意識，平常多多關心周遭同仁，型塑「人人都是關懷員」之組織文化，增進員工關懷轉介之敏感度。
+            </p><br>
+            <p>
+
+                <h2>「性別平等」教育宣導</h2><br>
+            <p>
+                「新城車站」設置性別平等教育專區，對員工及旅客進行「性別平等」教育宣導，透過各式「性別平等」教育文宣，使更多人對「性別平等」相關議題更加重視與了解。
+            </p><br>
+            <p>
+
+                「鐵道局」及「鐵道局東部工程處」每年皆會針對所屬員工進行「性別平等」教育訓練，對員工進行「性別平等」教育宣導，使員工對「性別平等」相關議題更加重視與了解，將「性別平等」觀念植入腦海內，在工作及生活都能將「性別平等」視為理所當然。
+            </p><br>
+            <p>
+                「鐵道局東部工程處」2023年「性別平等」教育訓練，由新城車站公共藝術品《織路》發想，預計播放諾貝爾文學獎改編電影《正發生》（L'Evenement），並有觀影後解析與討論環節，探討「你的子宮不是你的子宮!」、「身(生)不由己的難題」、「請你把子宮還給我」等「生育自主權」及女性「身體自主權」議題。
+            </p><br>
+            <p>
+
+                《正發生》講述60年代備受爭議的女性墮胎議題的作品，2021年甫上印就獲得奧斯卡、盧米埃電影獎和凱薩獎等各項大獎提名，更以評審團全票通過的極高評價，一舉拿下威尼斯影展最高榮譽金獅獎，《正發生》故事背景建構於60年代的法國，當時法律嚴令禁止女性墮胎。然而一名就讀文學系、天資聰穎的單身女大學生安（Anne），卻發現自己意外懷孕，面臨中斷學業的危機。安不甘受困歧異的框架，更不願就此葬送未來的夢想，即便受守舊醫生百般阻撓、人們異樣眼光看待，甚至可能遭逢牢獄之災，她仍決定鋌而走險，不惜一切代價尋求解脫。
+                從《織路》探討女性「身體自主權」及「生育自主權」
+            </p><br>
+            <p>
+                《織路》宛如子宮的外型，讓我們讚嘆：「子宮」是母性的象徵，更是人類生命的起點，《織路》散發出濃濃女性意識及生育之美。但您知道嗎?現在不管「國際間」到「臺灣」社會，對於女性「身體自主權」及子宮的「生育自主權」，沒有您想像中的美好。
+            </p><br>
+            <p>
+                2017年在美國演員艾莉莎·米蘭諾（Alyssa Milano）發推文呼籲女性說出她們的性騷擾和性侵經歷後，隨即引發一波全球性的關於女性被性侵和性騷擾經歷的對話，這是在全球引起軒然大波的「#MeToo」運動。「#MeToo」運動對性騷擾和性侵的公開討論，具有真正意義的影響，它讓成千上萬人『尤其是女性』，能夠公開談論她們的經歷，並得到傾聽和相信。
+            </p><br>
+            <p>
+
+                然許多人肯定有同樣的疑惑：「『#MeToo 』運動揭露出來的這些事實發生已久，卻直到現在才爆出來，並引起關注。這麼離譜的事竟然能發生，為什麼？」由#MeToo運動可以得到結論：「女性至今，依然是權利的貧戶。以前是，現在是，不遠的未來依然會是。」
+            </p><br>
+            <p>
+                「他只是在跟妳『開玩笑』，幹嘛說是性騷擾，不要太計較。」
+            </p><br>
+            <p>
+                「唉呦，我只是『不小心』碰到妳，這才不是性騷擾。」
+            </p><br>
+            <p>
+                「妳穿得太暴露，小心被人『怎麼樣』。」
+            </p><br>
+            <p>
+                「妳到這年紀還沒結婚，已經『生不出來』，沒人要了。」
+            </p><br>
+            <p>
+                「妳結婚後要好好服侍公婆、照顧先生跟小孩，成為『優秀的妻子』。」
+            </p><br>
+            <p>
+                「妳不知羞恥，未婚懷孕還想墮胎，傳出去，我(父母)還要不要做人阿!」
+            </p><br>
+            <p>
+                「妳已經生了一個女兒，趕快再生一個兒子來作伴，湊成一個『好』字!」
+            </p><br>
+            <p>
+                這些話是不是常常在您的週遭聽到?您已經習以為常，甚至從您的口裡說出呢? 其實，這些都已經侵犯到女性「身體自主權」及「生育權」，然而現今「臺灣」社會大多數的女性聽到這樣的話語，第一反應大多是：「強壓心裡的不適感，微笑點頭，默默接受」。而這些都是臺灣社會，自古長期以來的「重男輕女」及「兩性不平權」造就。
+            </p><br>
+            <p>
+
+                2021年臺灣衛福部完成《優生保健法》修正草案(更名為《生育保健法》)，祭出「刪除人工流產配偶同意規定」、「增列未成年人工流產同意的第三方機制」等11項修法重點，但草案預告後至今仍沒進度，這項保障女性「生育自主權」的法案，能否順利完成修法，引起大眾關注。《優生保健法》自1985年施行至今，曾於2006年、2008年及2012年3次送請立院修正審議，但皆因未完成審議及立委屆期不續審而未果。衛福部2021年提出草案，但目前還在與醫療及民間團體研議溝通。
+            </p><br>
+            <p>
+                CEDAW國際審查委員，2022年再次關切臺灣懷孕少女和已婚女性墮胎「去刑事化」進展。包括我國《刑法》目前仍有墮胎罪，儘管《優生保健法》例外阻卻違法，但仍有兩項條文，已婚女性進行人工流產需配偶同意；未成年女性則需家長或監護人同意，被視為阻礙「生育自主權」。
+            </p><br>
+            <p>
+                臺灣宗教團體認為「胎兒生命凌駕女性自主」，但當一個女性沒有辦法自主決定在哪個時間點懷孕，會影響女性的整體生涯規劃；人工流產除了涉及「生育自主」，也會涉及到女性的「社會參與」以及她的『人生』。
+            </p><br>
+            <p>
+                雖然臺灣「性別平等」在亞洲名列前茅， 但目前要實現真正的「性別平等」，沒有想像中的簡單，「臺灣與『性平』的距離」依舊存在。
+            </p><br>
+            <p>
+
+
+
+
+
+
+
+
+      @*  <h1>說到『子宮』<BR></h1><h1 class="h2">您會不會有點尷尬?</h1>
+        <p>
+            親愛的，您認識子宮嗎?<br>
+            子宮是母性的象徵，更是人類生命的起點，<br>
+            說到子宮，您會不會感到有點兒害羞或尷尬呢?<br>
+
+        </p>
+        <h4>親愛的，我把子宮掛高高!</h4>
+        <hr>
+
+
+
+        <p>
+            人來人往的車站內，鮮紅的大型公共藝術作品《 織路 Elug Tminum》懸吊高掛於出入大廳天花板上， 以原住民傳統被毯 Gabang做為發想，作品以色彩繽紛的原住民傳統織布包覆著 鋼骨結構藝術家在製作過程中恰好懷孕，創作時腦海裡出現不同的元素，逐漸衍生出有如「子宮」的外形 內部大大小小的孔道，宛如血液流通穿梭整體而尾端紅豔欲滴的開口，織出的是新生命誕生之路。
+        </p>
+
+        <p>
+            這是一件結合原住民工藝，質地柔軟、意象濃稠，充滿女性意識的純手工作品是由「太魯閣族」編織藝術家林介文小姐所製作，鐵道局將 《 織路 》 高掛於太魯閣國家公園的門戶「新城太魯閣車站」。
+        </p>
+        <p>
+            《織路》由天花板垂吊，猶如一個充滿文化織紋的時空背帶，歡迎著每位來自不同國家與文化的旅客，可讓觀賞者想像與認知，進入一個在地族群歷經了遷徙、文化傳承及歷史洪流的藝術旅途中，織出回家的路；也像是一個通道，如同一個生命經過艱難狹窄的地方，終能找到出口。作品在設置時，特別將作品陷落處向下延伸的喇叭狀開口，面向車站出入口，帶引人們進入一個充滿圖紋想像的世界。
+        </p>
+        <p>
+            《織路》是透過大量的民眾參與活動所組成，強調的是過程與參與，織布是行為，交換也是行為，行為發生的同時，觀念得以傳播，藝術也在其中產生。
+        </p>
+        <p>
+            《織路》在作品初期材料蒐集，透過「Tanbrigen跨國交換計畫」(Tanbrijen，中文是「交換」的意思)，蒐集了世界各地二手衣、棉線、回收毛衣等共230公斤的衣物材料，利用環保材質作為作品基礎。
+        </p>
+        <p>
+            回收回來的衣物，透過在花蓮地區舉辦4場「今日拆毛衣」活動，由132位民眾拆解成為棉線，作為下一階段編織作業的材料。
+        </p>
+        <p>
+            最後民眾合力拆解的毛衣棉線，透過「原住民織布計畫」將回收毛衣棉線、棉麻線、毛線及手工苧麻線等材料，以傳統原住民織布技術，組織成一塊塊呈現於眼前的美麗布料。
+        </p>
+        <p>
+            「原住民織布計畫」在花蓮縣境內花費一段時日，邀集30位以上會織布的原住民織女，其年齡分布於24至88歲。織布的藝術已經在現代生活中快要滅絕，藉由這次的織布計畫，重新讓織布藝術找到生命，得以延續。編織技藝為原住民族重要文化，而纖維藝術（Fiber Art）之材質與形式的多樣性，可重組出傳統編織美學之當代意象，傳統工藝混搭新世代美學，發揚百年傳統的原住民織布文化。
+        </p>
+        <p>
+            林介文藝術家說「我覺得織布就像是用手在走路，只是，走的速度很慢，但是有一種很踏實的感覺」，原住民織布在太魯閣族的傳統是一個女性的表徵，要會織布才能紋面，有紋面才能結婚，常常織的是一條通往山林裡的道路、一條記憶，而藝術家則想要透過《織路》表達這些女人們的記憶與技藝，藉此述說著「我們在這裡」。
+        </p>
+        <p>
+            林介文藝術家分享，她親自帶兩位織女阿嬤去看展覽，她們非常高興，一開始看到作品上自己織的布高掛在車站大廳上，有些不知所措，可過幾天，阿嬤很興奮地拿著傳單不停分享：「我跟你說喔，我的織布喔，掛在火車站上耶！」那時藝術家不禁感到欣慰：「對原住民老人家來說，我最希望能帶給他們的，就是像這樣的成就感。」
+        </p>
+
+
+        <div class="block">
+        </div>*@
+    </div>
+    @*<div class="right">
+       <div class="decoration"></div>
+        <div class="block">
+            <img src=https://drive.google.com/uc?export =view&id =11gFxBRHMyH_ps2kDt9YehgJW0Igt0rzf>
+
+
+            <h5>宛如子宮外型的「織路」高掛在新城車站</h5>
+            <br>
+            <hr>
+
+            <img src=https://drive.google.com/uc?export =view&id =1Rir8KnKE9ENpJ5zwzTnyBsirkFh0mSYM>
+
+            <h5>宛如字宮外型的「織路」高掛在新城車站</h5>      <br>
+            <hr>
+            <img src=https://drive.google.com/uc?export =view&id =1i3cD_DjPzRfQC1grv4fnUSmhoD41mcU->
+            <br>
+            <hr>
+            <img src=https://drive.google.com/uc?export =view&id =1mt_NNof1RwkVSU07iiXWVkithxATdKFd> <br>
+            <hr>
+            <img src=https://drive.google.com/uc?export =view&id =12iv0yl8dfjrmAgtwlx0ajwnz0w8xOpYI> <br>
+            <hr>
+            <img src=https://drive.google.com/uc?export =view&id =1Rir8KnKE9ENpJ5zwzTnyBsirkFh0mSYM>
+
+
+
+
+
+        </div>
+    </div>*@
+   
+</div>
+</body>
+</html>

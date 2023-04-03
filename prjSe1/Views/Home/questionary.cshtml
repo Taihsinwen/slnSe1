@@ -1,0 +1,214 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        html {
+            background-color: #37382F;
+            background-image: url(https://2017.awiclass.monoame.com/img/form_ground.svg);
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-position: 0 80%;
+            min-height: 100vh;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        form {
+            background-color: #3c3e34;
+            padding: 30px 100px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            border-bottom: 5px solid #ed9dce;
+            box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+
+            form img {
+                width: 120px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            form > * {
+                margin-bottom: 15px;
+            }
+
+            form h2 {
+                font-weight: normal;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            form h3 {
+                font-weight: normal;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            form input, form textarea, form select {
+                padding: 8px 15px;
+                font-size: 14px;
+                border-radius: 0px;
+                opacity: 0.9;
+                outline: none;
+            }
+
+                form input::placeholder, form textarea::placeholder, form select::placeholder {
+                    color: rgba(55, 56, 47, 0.5);
+                }
+
+            form textarea {
+                width: 500px;
+            }
+
+            form select, form input[type='radio'] {
+                appearance: none;
+            }
+
+            form .recommand.sex {
+                display: flex;
+                align-items: center;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+
+                form .recommand.sex label {
+                    margin-right: 40px;
+                    margin-left: 5px;
+                }
+
+            form input[type='radio'] {
+                padding: 0;
+                width: 20px;
+                height: 20px;
+                border: 2px solid white;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: 0.5s;
+            }
+
+                form input[type='radio']:checked {
+                    background-color: #ed9dce;
+                    border-color: #ed9dce;
+                }
+
+            form button {
+                background-color: transparent;
+                padding: 8px;
+                color: white;
+                cursor: pointer;
+            }
+
+                form button:hover {
+                    background-color: rgba(255, 255, 255, 0.3);
+                }
+    </style>
+
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(".ajaxbtn").click(function (evt) {
+            evt.preventDefault()
+            post()
+        })
+        function post() {
+            var datas = $("form").serializeArray()
+            console.log(datas)
+            datas.find(o => o.name == 'json').value = "true"
+            $.ajax({
+                url: "https://2017.awiclass.monoame.com/api/demo/feedback",
+
+                method: "post",
+                data: datas,
+                success: function (res) {
+                    console.log("ajax result:")
+                    console.log(res)
+                    $(".feedback").text(res.response)
+                    $("button").text("已收到您的意見！感謝您對性平議題的付出")
+
+
+                }
+            })
+
+            $(".ajaxbtn1").click(function (evt) {
+                evt.preventDefault()
+                post1()
+            })
+            function post1() {
+
+                var datas = $("form").serializeArray()
+                console.log(datas)
+                datas.find(o => o.name == 'json').value = "true"
+
+            }
+
+        }
+       //<form action="https://2017.awiclass.monoame.com/api/demo/feedback" method="post">
+    </script>
+
+</head>
+<body>
+   
+         <form method="post" action="@Url.Action("result","Home")">
+        <img src="/lib/form_leaf.svg" />
+        <h2>性平深耕 您我同行</h2>
+        <h3>鐵道局性平觀念宣導問卷</h3><select name="site">
+            <option value="" disabled="disabled" selected="selected">您的居住地</option>
+            <option value="東">宜花東</option>
+            <option value="北">北基桃竹</option>
+            <option value="中">苗中彰投</option>
+            <option value="南">雲嘉南雄屏</option>
+            <option value="島">離島地區</option>
+            <option value="外">國外</option>
+        </select><select name="age">
+            <option value="" disabled="disabled" selected="selected">您的年齡</option>
+            <option value="19歲以下">19歲以下</option>
+            <option value="20～29歲">20～29歲</option>
+            <option value="30～39歲">30～39歲</option>
+            <option value="40～49歲">40～49歲</option>
+            <option value="50～59歲">50～59歲</option>
+            <option value="60歲以上">60歲以上</option>
+        </select>
+        <div class="recommand">
+            <label>1.生理性別</label><input type="radio" name="sex" value="female" /><label>女</label><input type="radio" name="sex" value="male" /><label>男</label><input type="radio" name="sex" value="other" /><label>其他性別</label>
+            <hr /><label>2.請問您知道臺鐵花蓮新城站的公共藝術作品《織路》？</label><br /><input type="radio" name="know" value="yes" /><label>之前就聽說過（知道）</label><input type="radio" name="know" value="few" /><label>剛看資料才知道</label><input type="radio" name="know" value="no" /><label>不知道</label><br /><textarea name="know-comment" placeholder="(Optional)若您早就知道了，請問您從何處得知？" rows="1"></textarea>
+            <hr /><label>3.請問您對公共藝術作品《織路》的第一印象是？</label><br /><input type="radio" name="image" value="子宮" /><label>子宮</label><input type="radio" name="image" value="樂器-喇叭" /><label>樂器-喇叭</label><input type="radio" name="image" value="漏斗" /><label>漏斗</label><input type="radio" name="image" value="其他" /><label>其他</label>
+            <hr /><label>4.請問平常說到子宮，您會不會感到奇怪或尷尬？</label><br /><input type="radio" name="awkward" value="yes" /><label>會</label><input type="radio" name="awkward" value="few" /><label>有一點兒</label><input type="radio" name="awkward" value="no" /><label>不會</label>
+            <hr /><label>5.透過《織路》的網站介紹說明，您是否更瞭解該作品背後的含意？</label><br /><input type="radio" name="advantage" value="yes" /><label>會</label><input type="radio" name="advantage" value="few" /><label>有一點兒</label><input type="radio" name="advantage" value="no" /><label>不會</label>
+            <hr /><label>6.透過這次的宣導，以後再說到子宮，您會不會覺得比較自然？</label><br /><input type="radio" name="benefit" value="yes" /><label>會</label><input type="radio" name="benefit" value="few" /><label>有一點兒</label><input type="radio" name="benefit" value="no" /><label>不會</label>
+            <hr /><label>7.請問您對公共藝術導入性別及生命元素表示贊同嗎?</label><br /><input type="radio" name="life" value="yes" /><label>贊同</label><input type="radio" name="life" value="few" /><label>有一點兒</label><input type="radio" name="life" value="no" /><label>不贊同</label>
+            <hr /><label>8.請問您是否同意車站導入性別元素，有助提升國人性平意識?</label><br /><input type="radio" name="element" value="yes" /><label>同意</label><input type="radio" name="element" value="few" /><label>有一點兒</label><input type="radio" name="element" value="no" /><label>不同意</label>
+            <hr />
+        </div>
+        <div class="feedback"></div><button class="ajaxbtn">送出意見</button><input name="json" type="hidden" value="" />
+
+
+        @*<div class="row">
+
+            <p style="font-size:20px; color:blue; font-weight:bold">結束日期<input type="" name="EDTime" value="@ViewBag.EDTime" required /></p>*@
+
+        @*<p><input type="submit" value="送出意見" style="font-size:30px;width:130px;height:50px; float:right;" /></p>
+       </div>*@
+        
+
+
+    </form>
+
+</body>
+</html>
